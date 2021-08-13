@@ -2,8 +2,6 @@ version: '3.8'
 
 services:
   elasticsearch:
-    labels:
-        shipyard.route: '/'
     image: elasticsearch:7.8.0
     container_name: es
     environment:
@@ -39,6 +37,8 @@ services:
       - elastic
     command: logstash -f /usr/share/logstash/pipeline/logstash-nginx.config
   kibana:
+    labels:
+        shipyard.route: '/'
     image: kibana:7.8.0
     container_name: kib
     ports:
